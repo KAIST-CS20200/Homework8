@@ -25,11 +25,14 @@ module DeBruijnExpr =
 /// directly construct expressions, but use this module.
 module DeBruijnBuilder =
 
-  let ref n = failwith "IMPLEMENT"
+  let ref n =
+    failwith "IMPLEMENT" // REMOVE this line when you implement your own code
 
-  let abs e = failwith "IMPLEMENT"
+  let abs e =
+    failwith "IMPLEMENT" // REMOVE this line when you implement your own code
 
-  let app f e = failwith "IMPLEMENT"
+  let app f e =
+    failwith "IMPLEMENT" // REMOVE this line when you implement your own code
 
   let ($) f e = app f e
 
