@@ -86,7 +86,7 @@ A: No. Just encode positive integers and zero using Church numerals.
 
 ##### Q: Do I need to modify the parser?
 
-A: No. he current parser is to showcase that a simple REPL-like program can be
+A: No. The current parser is to showcase that a simple REPL-like program can be
 easily implemented using FParsec. You don't need to modify/improve the parser to
 finish this homework. But, of course, you can modify it for your own practice.
 
