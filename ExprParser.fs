@@ -2,7 +2,7 @@ namespace CS220
 
 open FParsec
 
-type ExprParser () =
+type ExprParser() =
 
   let isAllowedChar c = isAsciiLetter c || isDigit c
 
@@ -34,13 +34,13 @@ type ExprParser () =
   (* Tying the knot *)
   do pexprref := choice [ attempt plambda; attempt papply; attempt pvar ]
 
-  member __.Run line =
+  member _.Run line =
     match runParserOnString pexpr () "" line with
-    | Success (expr, _, _) ->
+    | Success(expr, _, _) ->
       try
         let dexpr = Translate.toDebruijn expr
-        if DeBruijnExpr.isValid dexpr then Result.Ok (expr, dexpr)
+        if DeBruijnExpr.isValid dexpr then Result.Ok(expr, dexpr)
         else Result.Error "Invalid lambda expression is given."
       with Translate.UnknownIdentifierException id ->
-        Result.Error ("Unknown identifier (" + id + ")")
-    | Failure (err, _, _) -> Result.Error (err)
+        Result.Error("Unknown identifier (" + id + ")")
+    | Failure(err, _, _) -> Result.Error(err)

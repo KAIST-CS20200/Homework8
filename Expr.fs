@@ -9,15 +9,15 @@ type DeBruijnExpr =
 
 module DeBruijnExpr =
   let rec toString = function
-    | Ref n -> n.ToString ()
+    | Ref n -> n.ToString()
     | Abs e -> "\u03bb" + " " + toString e
-    | App (f, e) -> "(" + toString f + " " + toString e + ")"
+    | App(f, e) -> "(" + toString f + " " + toString e + ")"
 
   /// Check if the given DeBruijnExpr is valid at depth n.
   let rec private isValidAtDepth n = function
     | Ref m -> m < n
     | Abs e -> isValidAtDepth (n + 1) e
-    | App (f, e) -> isValidAtDepth n f && isValidAtDepth n e
+    | App(f, e) -> isValidAtDepth n f && isValidAtDepth n e
 
   let isValid e = isValidAtDepth 1 e
 
@@ -43,6 +43,6 @@ type Expr =
 
 module Expr =
   let rec toString = function
-    | Var n -> n.ToString ()
-    | Lambda (v, e) -> "(\u03bb" + v.ToString () + "." + toString e + ")"
-    | Apply (f, e) -> "(" + toString f + " " + toString e + ")"
+    | Var n -> n.ToString()
+    | Lambda(v, e) -> "(\u03bb" + v.ToString() + "." + toString e + ")"
+    | Apply(f, e) -> "(" + toString f + " " + toString e + ")"
